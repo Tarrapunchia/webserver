@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylish Page with Favicon</title>
+    
+    <!-- Link to favicon -->
+    <link rel="icon" href="/solidsnake.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/stile.css">
+</head>
+<body>
+	<div class="page-wrapper">
+		<div class="overlay">
+				<div class="header">
+				</div>
+				<a>Welcome back Solid Snake!</a>
+				<p>Tasty!</p>
+					<audio id="bg-audio" loop>
+						<source src="/Metal Gear Solid Briefing.mp3" type="audio/mpeg">
+					</audio>
+				<button><a href="/home">Go to Home Directory</a></button>
+		</div>
+	</div>
+	  <script>
+		document.addEventListener('click', function startAudioOnce() 
+		{
+			const audio = document.getElementById('bg-audio');
+			audio.play().catch(e => console.log('Autoplay bloccato:', e));
+			document.removeEventListener('click', startAudioOnce);
+		});
+	  </script>
+</body>
+</html>

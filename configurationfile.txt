@@ -1,0 +1,180 @@
+server
+{
+    # Cartella dove sono salvati i file del sito
+    root ./home;
+   
+	# Ascolta sulla porta 8080 (HTTP)
+    listen 127.0.0.1:8080;
+
+	# Nome del server (dominio o IP)
+    
+    # Definisce l'indice del sito (pagina di default)
+    index home.html;
+
+    #client_header_timeout time;
+
+    # Size massima del body
+    client_max_body_size 10m;
+	
+    # Gestire un errore 404
+    # error_page 404 /404.html;
+    location /404.html
+	{
+        root ./home/prova; # Specifica la cartella contenente la pagina di errore
+		allowed_methods GET;
+	}
+
+    location /prova
+    {
+        root ./home;
+		allowed_methods GET POST;
+		autoindex on;
+    }
+
+	location /home
+	{
+		root ./;
+		allowed_methods GET;
+		autoindex on;
+	}
+
+    location /files
+    {
+		root ./;
+        allowed_methods POST GET DELETE;
+        autoindex on;
+    }
+
+    location /cgi-bin
+    {
+        root ./;
+        cgi on;
+        allowed_methods POST GET;
+    }
+}
+
+
+server
+{
+    # Cartella dove sono salvati i file del sito
+    root /home; # Modifica questo percorso con la tua directory
+   
+	# Ascolta sulla porta 80 (HTTP)
+    listen 127.0.0.1:9090;
+
+	# Nome del server (dominio o IP)
+    server_name example.com;
+    
+    # Definisce l'indice del sito (pagina di default)
+    index home.html;
+    
+    # Configurazione della posizione principale
+    location /imagefiles {
+        root /files/;
+	}
+	
+    # Gestire un errore 404
+    # error_page 404 /404.html;
+    location /404.html
+	{
+        root ./; # Specifica la cartella contenente la pagina di errore
+		allowed_methods GET POST;
+	}
+}
+
+server
+{
+    # Cartella dove sono salvati i file del sito
+    root ./home;
+   
+	# Ascolta sulla porta 8080 (HTTP)
+    listen 127.0.0.1:8080;
+
+	# Nome del server (dominio o IP)
+    server_name example.com;
+
+    # Definisce l'indice del sito (pagina di default)
+    index example_com.html;
+    
+    # Configurazione della posizione principale
+    location /imagefiles {
+        root /files/;
+		autoindex on;
+	}
+	
+    # Gestire un errore 404
+    # error_page 404 /404.html;
+    location /404.html
+	{
+        root ./home/prova; # Specifica la cartella contenente la pagina di errore
+		allowed_methods GET;
+	}
+
+    location /prova
+    {
+        root ./home;
+		allowed_methods GET POST;
+		autoindex on;
+    }
+
+	location /home
+	{
+		root ./;
+		allowed_methods GET;
+		autoindex on;
+	}
+
+    location /files
+    {
+        allowed_methods POST;
+    }
+}
+
+
+server
+{
+    # Cartella dove sono salvati i file del sito
+    root ./home;
+   
+	# Ascolta sulla porta 8080 (HTTP)
+    listen 127.0.0.1:8080;
+
+	# Nome del server (dominio o IP)
+    server_name casa.com;
+
+    # Definisce l'indice del sito (pagina di default)
+    index home.html;
+    
+    # Configurazione della posizione principale
+    location /imagefiles {
+        root /files/;
+		autoindex on;
+	}
+	
+    # Gestire un errore 404
+    # error_page 404 /404.html;
+    location /404.html
+	{
+        root ./home/prova; # Specifica la cartella contenente la pagina di errore
+		allowed_methods GET;
+	}
+
+    location /prova
+    {
+        root ./home;
+		allowed_methods GET POST;
+		autoindex on;
+    }
+
+	location /home
+	{
+		root ./;
+		allowed_methods GET;
+		autoindex on;
+	}
+
+    location /files
+    {
+        allowed_methods POST;
+    }
+}

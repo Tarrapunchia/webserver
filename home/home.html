@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Page with Favicon</title>
+    
+    <!-- Link to a favicon -->
+    <link rel="icon" href="solidsnake.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/stile.css">
+
+</head>
+	<body>
+		<div class="overlay">
+			<p>Metal Gear Home Page!
+			</p>
+			<p>
+				<audio id="bg-audio" src="solidsnake-theme.mp3" loop>
+					<!-- <source src="/solidsnake-theme.mp3" type="audio/mpeg"> -->
+				</audio>
+				<button><a href="./">Login Solid!</a></button>
+				<button id="btn" onclick="play()"><a id="off">🔇</a><a id="on" hidden>🔊</a></button>
+			</p>
+		</div>
+		<script>
+			const audio = document.getElementById('bg-audio');
+			audio.volume = 0.2;
+			let off = document.getElementById('off');
+			let on = document.getElementById('on');
+			let isOn = false;
+			function play() {
+				if (!isOn)
+				{
+					audio.play();
+					off.hidden = true;
+					on.hidden = false;
+					isOn = true;
+				}
+				else
+				{
+					audio.pause();
+					off.hidden = false;
+					on.hidden = true;
+					isOn = false;
+				}	
+			}
+
+		</script>
+	</body>
+</html>
